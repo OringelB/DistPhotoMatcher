@@ -18,7 +18,6 @@ def worker(task_queue, lock, match_counter):
                 task = task_queue.get()  # take a task
                 print(task)
             else:
-                print(None)
                 task = None #remove
 
         if task is None:
@@ -38,7 +37,5 @@ def worker(task_queue, lock, match_counter):
             with match_counter.get_lock():  # ensure only one process updates the counter at a time
                 match_counter.value += 1
             
-        print(f"Images {task.image_path} and {task.reference_path} are the same: {is_same}")
 
 
-        # print the result
